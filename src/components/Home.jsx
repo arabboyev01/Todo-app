@@ -4,12 +4,13 @@ import trash from './trash.png'
 import plus from './plus.png'
 
 function Home() {
+    
     const [toDo, setToDo] = useState([])
     const [inputValue, setInputValue] = useState('')
     const [count, setCount] = useState(0)
 
     const handleClear = () => setToDo([])
-    
+
     const handleAddTODO = () => {
         if(inputValue){
             setCount(count + 1)
