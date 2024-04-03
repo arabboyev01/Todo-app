@@ -1,36 +1,61 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import './style.scss'
 import trash from './trash.png'
 import plus from './plus.png'
 
 function Home() {
+    const [toDo, setToDo] = useState([])
+    const [inputValue, setInputValue] = useState('')
+    const [count, setCount] = useState(0)
+
+
+    const handleAddTODO = () => {
+        if(inputValue){
+            setCount(count + 1)
+            setToDo([...toDo, {
+                id: count,
+                name: inputValue
+            }])
+            setInputValue('')
+        }
+    }
+
+    const handleClear = () => {
+        setToDo([])
+    }
+
+    const handleDelete = (id) => {
+        const deletedData = toDo.filter((item) => item.id !== id)
+        setToDo(deletedData)
+    }
+    
     return (
         <div className="container">
-            <h1>Home</h1>
-            <Link to="/service">Service</Link>
-
             <div className="hero">
                 <h1 className="title">Todo app</h1>
                 <div className="bnt__inp">
-                    <input className="inp" type="text" placeholder="Add tour new todo" />
-                    <img className="img__plus" src={plus} />
+                    <input 
+                        className="inp" type="text" 
+                        placeholder="Add tour new todo" 
+                        onChange={(e) => setInputValue(e.target.value)}
+                        value={inputValue}
+                    />
+                    <img className="img__plus" src={plus} onClick={handleAddTODO}/>
                 </div>
 
-                <button className="btn__item">Buy a new gaming laptop</button>
+                {toDo.map((item) => 
+                    <div className="btn__inp-item">
+                        <button className="btn__item2">{item.name}</button>
+                        <img className="img__trash" src={trash} onClick={() => handleDelete(item.id)}/>
+                    </div>
+                )}
 
-                <div className="btn__inp-item">
-                    <button className="btn__item2">Complete a previous task</button>
-                    <img className="img__trash" src={trash} />
+                {toDo.length ? (
+                    <div className="sub__display">
+                    <h1 className="sub__titile">You have {toDo.length} pending tasks</h1>
+                    <button className="sub__button" onClick={handleClear}>Clear All</button>
                 </div>
-
-                <button className="btn__item">Create video for YouTube</button><br />
-                <button className="btn__item">Create a portfolio site</button>
-
-                <div className="sub__display">
-                    <h1 className="sub__titile">You have 4 pending tasks</h1>
-                    <button className="sub__button">Clear All</button>
-                </div>
+                ) : ""}
             </div>
         </div>
     )
