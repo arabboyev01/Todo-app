@@ -8,7 +8,8 @@ function Home() {
     const [inputValue, setInputValue] = useState('')
     const [count, setCount] = useState(0)
 
-
+    const handleClear = () => setToDo([])
+    
     const handleAddTODO = () => {
         if(inputValue){
             setCount(count + 1)
@@ -18,10 +19,6 @@ function Home() {
             }])
             setInputValue('')
         }
-    }
-
-    const handleClear = () => {
-        setToDo([])
     }
 
     const handleDelete = (id) => {
