@@ -31,6 +31,7 @@
     .inp {
         height: 50px;
         width: 380px;
+        cursor:pointer;
     }
 
     ::placeholder {
@@ -48,6 +49,7 @@
         border-radius: 5px;
         margin-bottom: -10px;
         height: 50px;
+        cursor:pointer;
 
     }
 
@@ -58,6 +60,7 @@
         margin-left: 15px;
         padding: 10px;
         margin-bottom: -20px;
+        cursor:pointer;
     }
 
     .img__trash {
@@ -67,7 +70,7 @@
         margin-top: 15px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-
+        cursor:pointer;
     }
 
     .btn__inp-item {
@@ -88,6 +91,7 @@
         font-size: large;
         text-align: start;
         padding: 10px;
+        cursor:pointer;
     }
 }
 
@@ -103,7 +107,7 @@
     font-size: large;
     text-align: start;
     padding: 10px;
-
+    cursor:pointer;
 }
 
 
@@ -129,4 +133,5 @@
     font-family: Poppins;
     margin-left: 150px;
     margin-left: 140px;
+    cursor:pointer;
 }
